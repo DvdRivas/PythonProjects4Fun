@@ -1,0 +1,52 @@
+#Number Guessing Game Objectives:
+from replit import clear
+from art import logo
+import random
+newgame=True
+keep=True
+def finish(state):
+  global keep
+  print(f"{state}")
+  keep=False
+  
+def guessing():
+  global lives
+  guess=int(input("Choose a number: "))
+  lives-=1
+  print(f"You have {lives} attempts left")
+  if guess>number:
+    print("Too High")
+  elif guess<number:
+    print("Too Low")
+  else:
+    finish("You guessed the number, Nice work!")
+  if lives==0:
+    finish(f"Ran out of lifes, the number was: {number}")
+    return lives
+
+while newgame:
+  print(logo)
+  number=random.randint(1,100)
+  if input("Wold you like to play the 'easy' or the 'hard' mode ")=="easy":
+    lives=10
+  else:
+    lives=5
+  keep=True
+  while keep:
+    guessing()
+    print()
+  if input("Would you like to play again? type 'yes' or 'no' ")=="no":
+    newgame=False
+  clear()
+-------------------------------------------------------
+art.py
+-------------------------------------------------------
+logo="""
+  ooooooo8                                              o88                                  ooooooo8                                      
+o888    88 oooo  oooo  ooooooooo8  oooooooo8  oooooooo8 oooo  oo oooooo     oooooooo8      o888    88   ooooooo   oo ooo oooo   ooooooooo8 
+888    oooo 888   888 888oooooo8  888ooooooo 888ooooooo  888   888   888  888    88o       888    oooo  ooooo888   888 888 888 888oooooo8  
+888o    88  888   888 888                 888        888 888   888   888   888oo888o       888o    88 888    888   888 888 888 888         
+ 888ooo888   888o88 8o  88oooo888 88oooooo88 88oooooo88 o888o o888o o888o 888     888       888ooo888  88ooo88 8o o888o888o888o  88oooo888 
+                                                                           888ooo888                                                       
+                                                                           
+"""

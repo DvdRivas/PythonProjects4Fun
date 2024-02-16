@@ -1,0 +1,36 @@
+from replit import clear
+from art import logo
+print(logo)
+print("Welcome to the blind auction program!")
+list={}
+def add(b,n):
+  list[b]=n
+keep= True
+while keep:
+  name=input("What's your name?: ")
+  bet=int(input("How many would you like to bid? $"))
+  add(bet, name)
+  answer=input("Is there someone else who wants to make a bid? 'yes' or 'not'")
+  if answer=="not":
+    keep=False
+  clear()
+winner=max(list)
+print(logo)
+print(f"Congratulations to {list[winner]}, who mades a bit of ${winner}.")
+
+--------------------------------------------
+art.py
+--------------------------------------------
+logo = '''
+                         ___________
+                         \         /
+                          )_______(
+                          |"""""""|_.-._,.---------.,_.-._
+                          |       | | |               | | ''-.
+                          |       |_| |_             _| |_..-'
+                          |_______| '-' `'---------'` '-'
+                          )"""""""(
+                         /_________\\
+                       .-------------.
+                      /_______________\\
+'''

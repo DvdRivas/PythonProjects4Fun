@@ -1,0 +1,76 @@
+from replit import clear
+from art import logo
+import random
+
+newgame=True
+def carta(cart):  
+  print(".------.")
+  print(f"|{cart}_  _ |")
+  print("|( \/ )|")
+  print("| \  / |")
+  print(f"|  \/ {cart}|")
+  print("`------'")
+  
+def pick(w):
+  if w==0:
+    cart=random.choice(list(dicc.keys()))
+    carta(cart)
+    your_carts.append(dicc[cart])
+  else:
+    their_carts.append(dicc[random.choice(list(dicc.keys()))])
+
+def dealer():
+  while sum(their_carts)<17:
+    pick(1)
+    carta(their_carts[-1])
+  print(f"Dealer Hand: {sum(their_carts)}")
+  if sum(their_carts)>21 or sum(your_carts)>sum(their_carts):
+    print("You win!")
+  elif sum(their_carts)==sum(your_carts):
+    print("It's a draw!")
+  else:
+    print("Dealer Wins!")
+  return False
+  
+while newgame:
+  dicc={"A":11,"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"10":10,"J":10,"Q":10,"K":10}
+  your_carts=[]
+  their_carts=[]
+  print(logo)
+  ingame=True
+  pick(1)
+  pick(1)
+  print(f"Dealer Hand: {their_carts[0]}")
+  carta(their_carts[0])
+  print("Your Hand:")
+  pick(0)
+  pick(0)
+  dicc["A"]=1
+  print(f"It's {sum(your_carts)}")
+  while ingame:
+    if input("Would you like another card? type 'y' to ask or 'n' to stay ") == "y":
+      pick(0)
+      if sum(your_carts)>21:
+        print("You loose!")
+        ingame=False
+      print(f"Your Hand: {sum(your_carts)}")
+    else:
+      print(f"Dealer Hand: {sum(their_carts)}")
+      ingame=dealer()
+      
+  if input("Play another?: type 'y' to start or 'n' to out ") == "n":    
+    newgame=False
+  clear()
+-------------------------------------------
+art.py
+-------------------------------------------
+logo = """
+.------.            _     _            _    _            _    
+|A_  _ |.          | |   | |          | |  (_)          | |   
+|( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
+| \  /|K /\  |     | '_ \| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+|  \/ | /  \ |     | |_) | | (_| | (__|   <| | (_| | (__|   < 
+`-----| \  / |     |_.__/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\\
+      |  \/ K|                            _/ |                
+      `------'                           |__/           
+"""

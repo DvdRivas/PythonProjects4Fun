@@ -1,0 +1,61 @@
+from replit import clear
+from art import logo
+
+def add(n1,n2):
+  return n1+n2
+
+def subs(n1,n2):
+  return n1-n2
+
+def mul(n1,n2):
+  return n1*n2
+  
+def div(n1,n2):
+  return n1/n2
+  
+  
+
+operations={"+":add,"-":subs,"*":mul,"/":div}
+keep=True
+operation_before=False
+print(logo)
+while keep:
+  if operation_before:
+      num1=result
+  else:
+    num1=float(input("Insert a number: "))
+  op=input("What operation would you like to do: \n + \n - \n * \n / \n")
+  if op not in operations:
+    print("Select a correct operation")
+  else:
+    function=operations[op]
+    num2=float(input("Insert another number: "))
+    result=function(num1, num2)
+    print(f"{num1} {op} {num2} = {result}")
+    if input("Want to make another operation to the result? type 'yes or 'no''") == "no":
+      keep==False
+      clear()
+      print(logo)
+      operation_before=False
+    else:
+      operation_before=True
+
+------------------------------------------------------
+art.py
+------------------------------------------------------
+logo = """
+ _____________________
+|  _________________  |
+| | Pythonista   0. | |  .----------------.  .----------------.  .----------------.  .----------------. 
+| |_________________| | | .--------------. || .--------------. || .--------------. || .--------------. |
+|  ___ ___ ___   ___  | | |     ______   | || |      __      | || |   _____      | || |     ______   | |
+| | 7 | 8 | 9 | | + | | | |   .' ___  |  | || |     /  \     | || |  |_   _|     | || |   .' ___  |  | |
+| |___|___|___| |___| | | |  / .'   \_|  | || |    / /\ \    | || |    | |       | || |  / .'   \_|  | |
+| | 4 | 5 | 6 | | - | | | |  | |         | || |   / ____ \   | || |    | |   _   | || |  | |         | |
+| |___|___|___| |___| | | |  \ `.___.'\  | || | _/ /    \ \_ | || |   _| |__/ |  | || |  \ `.___.'\  | |
+| | 1 | 2 | 3 | | x | | | |   `._____.'  | || ||____|  |____|| || |  |________|  | || |   `._____.'  | |
+| |___|___|___| |___| | | |              | || |              | || |              | || |              | |
+| | . | 0 | = | | / | | | '--------------' || '--------------' || '--------------' || '--------------' |
+| |___|___|___| |___| |  '----------------'  '----------------'  '----------------'  '----------------' 
+|_____________________|
+"""
